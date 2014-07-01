@@ -10,17 +10,21 @@
 % uncomment this if you want to enable debug mode
 %-define(DEBUG, true).
 
--ifdef(debug).
-    -define(LOG_DEBUG(Format, Data), ?LOG_INFO("*** DEBUG ~p:~p " ++ Format ++ " ***", [?MODULE, ?LINE | Data])).
-    -define(LOG_ERROR(Fun, Format, Data), error_logger:error_msg("~p:~p(): " ++ Format ++ "~n", [?MODULE, Fun] ++ Data)).
-    -define(LOG_WARNING(Fun, Format, Data), error_logger:warning_msg("~p:~p(): " ++ Format ++ "~n", [?MODULE, Fun] ++ Data)).
-    -define(LOG_INFO(Format, Data), error_logger:info_msg(Format ++ "~n", Data)).
--else.
-    -define(LOG_DEBUG(Format, Data), true).
-    -define(LOG_ERROR(Fun, Format, Data), true).
-    -define(LOG_WARNING(Fun, Format, Data), true).
-    -define(LOG_INFO(Format, Data), true).
--endif.
+%-ifdef(debug).
+%    -define(LOG_DEBUG(Format, Data), ?LOG_INFO("*** DEBUG ~p:~p " ++ Format ++ " ***", [?MODULE, ?LINE | Data])).
+%    -define(LOG_ERROR(Fun, Format, Data), error_logger:error_msg("~p:~p(): " ++ Format ++ "~n", [?MODULE, Fun] ++ Data)).
+%    -define(LOG_WARNING(Fun, Format, Data), error_logger:warning_msg("~p:~p(): " ++ Format ++ "~n", [?MODULE, Fun] ++ Data)).
+%    -define(LOG_INFO(Format, Data), error_logger:info_msg(Format ++ "~n", Data)).
+%-else.
+%    -define(LOG_DEBUG(Format, Data), true).
+%    -define(LOG_ERROR(Fun, Format, Data), true).
+%    -define(LOG_WARNING(Fun, Format, Data), true).
+%    -define(LOG_INFO(Format, Data), true).
+%-endif.
+-define(LOG_DEBUG(Format, Data), true).
+-define(LOG_ERROR(Fun, Format, Data), true).
+-define(LOG_WARNING(Fun, Format, Data), true).
+-define(LOG_INFO(Format, Data), true).
 
 -define(t2b(T), term_to_binary(T)).
 -define(b2t(B), binary_to_term(B)).
