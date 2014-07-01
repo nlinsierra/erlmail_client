@@ -1,8 +1,9 @@
--ifdef(debug).
--define(D(X), io:format("DEBUG ~p:~p ~p~n",[?MODULE, ?LINE, X])).
--else.
+%-ifdef(debug).
+%-define(D(X), io:format("DEBUG ~p:~p ~p~n",[?MODULE, ?LINE, X])).
+%-else.
+%-define(D(X), undefined).
+%-endif.
 -define(D(X), undefined).
--endif.
 
 -ifndef(CRLF).
 -define(CRLF,[13,10]).
